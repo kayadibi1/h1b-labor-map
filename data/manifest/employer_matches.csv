@@ -1,0 +1,40 @@
+employer_norm,canonical_group,tier,score,from
+GITHUB,MICROSOFT,exact_alias,,auto
+TWITTER,X / TWITTER,exact_alias,,auto
+META PLATFORMS,META / FACEBOOK,exact_alias,,auto
+META PLATFORMS,META / FACEBOOK,exact_alias,,auto
+JOHNS HOPKINS UNIVERSITY,JOHNS HOPKINS UNIVERSITY,exact_alias,,auto
+GOOGLE,ALPHABET / GOOGLE,exact_alias,,auto
+PRICEWATERHOUSECOOPERS,PWC,exact_alias,,auto
+DELOITTE,DELOITTE,exact_alias,,auto
+LINKEDIN,MICROSOFT,exact_alias,,auto
+DELOITTE AND TOUCHE,DELOITTE,exact_alias,,auto
+DELOITTE TAX,DELOITTE,exact_alias,,auto
+AMAZON WEB SERVICES,AMAZON,exact_alias,,auto
+BLOCK,BLOCK / SQUARE,exact_alias,,auto
+AUDIBLE,AMAZON,exact_alias,,auto
+LINKEDIN,MICROSOFT,exact_alias,,auto
+DELOITTE CONSULTING,DELOITTE,exact_alias,,auto
+BLOCK,BLOCK / SQUARE,exact_alias,,auto
+BAIN AND,BAIN,exact_alias,,auto
+GOLDMAN SACHS BANK,GOLDMAN SACHS,exact_alias,,auto
+META PLATFORMS,META / FACEBOOK,exact_alias,,auto
+META PLATFORMS,META / FACEBOOK,exact_alias,,auto
+AMAZON WEB SERVICES,AMAZON,exact_alias,,auto
+DELOITTE CONSULTING,DELOITTE,exact_alias,,auto
+AMAZON COM SERVICES,AMAZON,exact_alias,,auto
+AMAZON WEB SERVICES,AMAZON,exact_alias,,auto
+MICROSOFT,MICROSOFT,exact_alias,,auto
+AMAZON COM SERVICES,AMAZON,exact_alias,,auto
+PRICEWATERHOUSECOOPERS,PWC,exact_alias,,auto
+ACCENTURE,ACCENTURE,exact_alias,,auto
+AMAZON COM SERVICES,AMAZON,exact_alias,,auto
+ERNST AND YOUNG,EY,exact_alias,,auto
+PWC,PWC,exact_alias,,auto
+KPMG,KPMG,exact_alias,,auto
+AMAZON WEB SERVICES,AMAZON,exact_alias,,auto
+WHATSAPP,META / FACEBOOK,exact_alias,,auto
+X,X / TWITTER,exact_alias,,auto
+X,X / TWITTER,exact_alias,,auto
+BOSTON CONSULTING,BOSTON CONSULTING GROUP,exact_alias,,auto
+AMAZON,AMAZON,exact_alias,,auto

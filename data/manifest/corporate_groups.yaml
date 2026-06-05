@@ -1,0 +1,127 @@
+# corporate_groups.yaml — manual parent <-> subsidiary consolidation overrides
+# Applied LAST in the tiered matcher (entity_resolve.py), overriding token-sort.
+# Add entries as you discover them in /data/manifest/employer_matches_review.csv.
+
+groups:
+  - canonical: "ALPHABET / GOOGLE"
+    aliases:
+      - "GOOGLE"
+      - "GOOGLE LLC"
+      - "GOOGLE INC"
+      - "ALPHABET"
+      - "ALPHABET INC"
+      - "YOUTUBE"
+      - "YOUTUBE LLC"
+      - "DEEPMIND"
+
+  - canonical: "META / FACEBOOK"
+    aliases:
+      - "META"
+      - "META PLATFORMS"
+      - "META PLATFORMS INC"
+      - "FACEBOOK"
+      - "FACEBOOK INC"
+      - "INSTAGRAM"
+      - "WHATSAPP"
+
+  - canonical: "MICROSOFT"
+    aliases:
+      - "MICROSOFT"
+      - "MICROSOFT CORPORATION"
+      - "MICROSOFT CORP"
+      - "LINKEDIN"
+      - "LINKEDIN CORPORATION"
+      - "GITHUB"
+
+  - canonical: "AMAZON"
+    aliases:
+      - "AMAZON"
+      - "AMAZON.COM"
+      - "AMAZON COM SERVICES"
+      - "AMAZON WEB SERVICES"
+      - "AWS"
+      - "AUDIBLE"
+      - "TWITCH"
+
+  - canonical: "X / TWITTER"
+    aliases:
+      - "X CORP"
+      - "TWITTER"
+      - "TWITTER INC"
+
+  - canonical: "BLOCK / SQUARE"
+    aliases:
+      - "BLOCK"
+      - "BLOCK INC"
+      - "SQUARE"
+      - "SQUARE INC"
+      - "CASH APP"
+
+  - canonical: "JPMORGAN CHASE"
+    aliases:
+      - "JPMORGAN"
+      - "JPMORGAN CHASE"
+      - "JP MORGAN"
+      - "JP MORGAN CHASE"
+      - "CHASE BANK"
+
+  - canonical: "GOLDMAN SACHS"
+    aliases:
+      - "GOLDMAN SACHS"
+      - "GOLDMAN SACHS GROUP"
+      - "GOLDMAN SACHS BANK"
+
+  - canonical: "DELOITTE"
+    aliases:
+      - "DELOITTE"
+      - "DELOITTE CONSULTING"
+      - "DELOITTE TOUCHE TOHMATSU"
+      - "DELOITTE TAX"
+      - "DELOITTE AND TOUCHE"
+
+  - canonical: "ACCENTURE"
+    aliases:
+      - "ACCENTURE"
+      - "ACCENTURE FEDERAL SERVICES"
+      - "ACCENTURE LLP"
+
+  - canonical: "EY"
+    aliases:
+      - "ERNST AND YOUNG"
+      - "ERNST YOUNG"
+      - "EY"
+
+  - canonical: "PWC"
+    aliases:
+      - "PRICEWATERHOUSECOOPERS"
+      - "PRICE WATERHOUSE COOPERS"
+      - "PWC"
+
+  - canonical: "KPMG"
+    aliases:
+      - "KPMG"
+      - "KPMG LLP"
+
+  - canonical: "MCKINSEY"
+    aliases:
+      - "MCKINSEY"
+      - "MCKINSEY AND COMPANY"
+      - "MCKINSEY COMPANY"
+
+  - canonical: "BOSTON CONSULTING GROUP"
+    aliases:
+      - "BOSTON CONSULTING GROUP"
+      - "BCG"
+
+  - canonical: "BAIN"
+    aliases:
+      - "BAIN AND COMPANY"
+      - "BAIN COMPANY"
+
+  - canonical: "JOHNS HOPKINS UNIVERSITY"
+    aliases:
+      - "JOHNS HOPKINS UNIVERSITY"
+      - "JOHNS HOPKINS"
+      - "JHU"
+      - "JOHNS HOPKINS APPLIED PHYSICS LABORATORY"
+      - "APL"

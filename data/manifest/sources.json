@@ -1,0 +1,123 @@
+{
+  "bls_oews_may2024": {
+    "bytes": 40189821,
+    "downloaded_at": "2026-05-28T04:00:23Z",
+    "etag": "\"8014d08177aadc1:0\"",
+    "extra": {},
+    "last_modified": "Mon, 02 Mar 2026 19:05:17 GMT",
+    "name": "bls_oews_may2024",
+    "saved_to": "data\\raw\\bls\\oews\\oewsm2024ma.zip",
+    "sha256": "7bf915fc47e464983c5b8b8200d63a733ef90275c7af0576b78875e5b04d35d9",
+    "url": "https://www.bls.gov/oes/special.requests/oesm24ma.zip"
+  },
+  "census_cbsa_delineation_2023": {
+    "bytes": 143798,
+    "downloaded_at": "2026-05-28T04:00:39Z",
+    "etag": null,
+    "extra": {},
+    "last_modified": "Fri, 04 Aug 2023 14:36:17 GMT",
+    "name": "census_cbsa_delineation_2023",
+    "saved_to": "data\\raw\\census\\cbsa_delineation_2023.xlsx",
+    "sha256": "952c4b1e78acbb54e6ec9412434b7602fedacbf021736351a63c181bdb753629",
+    "url": "https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx"
+  },
+  "dol_lca_fy2022": {
+    "bytes": 56112204,
+    "downloaded_at": "2026-05-28T03:57:06Z",
+    "etag": "\"636be5b5-358344c\"",
+    "extra": {},
+    "last_modified": "Wed, 09 Nov 2022 17:39:01 GMT",
+    "name": "dol_lca_fy2022",
+    "saved_to": "data\\raw\\dol\\lca\\lca_fy2022.xlsx",
+    "sha256": "4b6ee1656fc7f59fb6f4314f3e7a31439c971d06994554b16307bbd96a35618e",
+    "url": "https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2022_Q4.xlsx"
+  },
+  "dol_lca_fy2023": {
+    "bytes": 86344292,
+    "downloaded_at": "2026-05-28T03:57:07Z",
+    "etag": "\"654ba159-5258264\"",
+    "extra": {},
+    "last_modified": "Wed, 08 Nov 2023 14:55:21 GMT",
+    "name": "dol_lca_fy2023",
+    "saved_to": "data\\raw\\dol\\lca\\lca_fy2023.xlsx",
+    "sha256": "a070600b44add357335c159109bd1747e6a683b95acb985e464f0fefbbb5561c",
+    "url": "https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2023_Q4.xlsx"
+  },
+  "dol_lca_fy2024": {
+    "bytes": 83056843,
+    "downloaded_at": "2026-05-28T03:57:09Z",
+    "etag": "\"67335eb5-4f358cb\"",
+    "extra": {},
+    "last_modified": "Tue, 12 Nov 2024 13:57:09 GMT",
+    "name": "dol_lca_fy2024",
+    "saved_to": "data\\raw\\dol\\lca\\lca_fy2024.xlsx",
+    "sha256": "23bc116e679e7ff10b9ac947dc4faf7942ae59ef1c3ffb5a10be61c4ae31ba30",
+    "url": "https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2024_Q4.xlsx"
+  },
+  "dol_lca_fy2025": {
+    "bytes": 79134156,
+    "downloaded_at": "2026-05-28T03:57:10Z",
+    "etag": "\"694421d3-4b77dcc\"",
+    "extra": {},
+    "last_modified": "Thu, 18 Dec 2025 15:46:27 GMT",
+    "name": "dol_lca_fy2025",
+    "saved_to": "data\\raw\\dol\\lca\\lca_fy2025.xlsx",
+    "sha256": "81ebf97d471014b91ae685cb7eb505369d7c80af2de67944ddd7531814976370",
+    "url": "https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2025_Q4.xlsx"
+  },
+  "ipeds_hd_2023": {
+    "bytes": 1110720,
+    "downloaded_at": "2026-05-28T04:00:39Z",
+    "etag": "\"07c9a7382bdc1:0\"",
+    "extra": {},
+    "last_modified": "Sun, 21 Sep 2025 20:40:56 GMT",
+    "name": "ipeds_hd_2023",
+    "saved_to": "data\\raw\\ipeds\\HD2023.zip",
+    "sha256": "e11d35af6f50fbe2f51d8ddd5a9d4f49860abbab7d73beae1f8524f13ad8945b",
+    "url": "https://nces.ed.gov/ipeds/datacenter/data/HD2023.zip"
+  },
+  "uscis_hub_fy2020": {
+    "bytes": 3638812,
+    "downloaded_at": "2026-05-28T04:00:21Z",
+    "etag": "\"37861c-5b865b9e6a4cc\"",
+    "extra": {},
+    "last_modified": "Fri, 08 Jan 2021 16:05:33 GMT",
+    "name": "uscis_hub_fy2020",
+    "saved_to": "data\\raw\\uscis\\employer_hub\\hub_fy2020.csv",
+    "sha256": "c3e74619514e80fd38eaa2cae70268a5b4e905b26b0c09fdefdd41868cb1f1ed",
+    "url": "https://www.uscis.gov/sites/default/files/document/data/h1b_datahubexport-2020.csv"
+  },
+  "uscis_hub_fy2021": {
+    "bytes": 3997947,
+    "downloaded_at": "2026-05-28T04:00:21Z",
+    "etag": "\"3d00fb-5d4541fe7f570\"",
+    "extra": {},
+    "last_modified": "Thu, 30 Dec 2021 02:51:01 GMT",
+    "name": "uscis_hub_fy2021",
+    "saved_to": "data\\raw\\uscis\\employer_hub\\hub_fy2021.csv",
+    "sha256": "70bc5d3558751199928e798fd9cdef6d8379f6a96805d2855344a59f2734a730",
+    "url": "https://www.uscis.gov/sites/default/files/document/data/h1b_datahubexport-2021.csv"
+  },
+  "uscis_hub_fy2022": {
+    "bytes": 4040115,
+    "downloaded_at": "2026-05-28T04:00:22Z",
+    "etag": "\"3da5b3-5f342045c0988\"",
+    "extra": {},
+    "last_modified": "Fri, 27 Jan 2023 17:15:50 GMT",
+    "name": "uscis_hub_fy2022",
+    "saved_to": "data\\raw\\uscis\\employer_hub\\hub_fy2022.csv",
+    "sha256": "692cc11c7d48739d5ff4363a6ba7cbe0c422334c417dd88813aa1ff596d5f879",
+    "url": "https://www.uscis.gov/sites/default/files/document/data/h1b_datahubexport-2022.csv"
+  },
+  "uscis_hub_fy2023": {
+    "bytes": 2202574,
+    "downloaded_at": "2026-05-28T04:00:22Z",
+    "etag": "\"219bce-5fd00d03b6108\"",
+    "extra": {},
+    "last_modified": "Wed, 31 May 2023 17:40:18 GMT",
+    "name": "uscis_hub_fy2023",
+    "saved_to": "data\\raw\\uscis\\employer_hub\\hub_fy2023.csv",
+    "sha256": "96f42309393249a7368bd418b2b2c5111b45acc7ccec487a0f024dfa07d71931",
+    "url": "https://www.uscis.gov/sites/default/files/document/data/h1b_datahubexport-2023.csv"
+  }
+}

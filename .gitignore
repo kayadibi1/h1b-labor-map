@@ -1,0 +1,33 @@
+# Secrets
+.env
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+.uv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# Data (raw + intermediate; mart outputs may be committed selectively)
+data/raw/
+data/staging/
+data/marts/*.parquet
+data/marts/*.csv
+data/manifest/snapshots/*.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

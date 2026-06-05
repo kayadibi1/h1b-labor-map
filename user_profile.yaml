@@ -1,0 +1,101 @@
+# user_profile.yaml — applicant-specific knobs.
+# Defaults are tuned for a SAIS / policy / analyst F-1 -> H-1B applicant.
+# Edit at the Phase 0.6 gate (CIP code is the critical input — see Phase 0.0).
+
+identity:
+  # REPLACE with your actual CIP code. SAIS programs vary; common candidates:
+  #   45.0901 = International Relations and National Security Studies (NOT STEM)
+  #   45.0603 = International Economics (NOT STEM)
+  #   45.0605 = International Trade (NOT STEM)
+  #   30.2001 = International/Global Studies (NOT STEM)
+  #   30.4901 = Data Analytics, General                      (STEM)
+  #   45.0102 = Research Methodology and Quantitative Methods (STEM)
+  # The pipeline branches on this — confirm against the live SEVP STEM list
+  # in Phase 0.0 before relying on the branch decision.
+  cip_code: "45.0901"
+  cip_source_doc: "Self-reported; verify against degree conferral letter"
+  program_name: "MA, SAIS — International Relations / Strategic Studies"
+
+# ----------------------------------------------------------------------------
+# Filtering gates (applied BEFORE scoring)
+# ----------------------------------------------------------------------------
+gates:
+  # Auto-branched in Phase 0.0 based on CIP STEM eligibility.
+  # null = let Phase 0.0 set it.
+  cap_exempt_only: null
+
+  exclude_staffing_firms: true
+  min_wage_floor_usd_annual: 75000
+  min_evidence_tier: "MEDIUM"     # HIGH | MEDIUM | LOW
+
+# ----------------------------------------------------------------------------
+# Personal-score weights (positives sum to 1.0; w_layoff is separate penalty)
+# ----------------------------------------------------------------------------
+weights:
+  w_realism: 0.45
+  w_fit:     0.20
+  w_wage:    0.15
+  w_metro:   0.10
+  w_demand:  0.10
+  w_layoff:  0.25  # subtractive penalty, NOT in the sum-to-1 above
+
+# ----------------------------------------------------------------------------
+# SOC weights (per code; absent => 0). Default mirrors config.yaml target_socs
+# with weights ranked by realistic SAIS fit + sponsorship viability.
+# ----------------------------------------------------------------------------
+soc_weights:
+  "15-2031": 1.00  # Operations Research Analysts (STEM, high volume)
+  "15-2041": 1.00  # Statisticians (STEM, high volume)
+  "13-1111": 0.85  # Management Analysts
+  "13-2051": 0.85  # Financial / Investment Analysts
+  "19-3011": 0.90  # Economists
+  "13-1041": 0.70  # Compliance Officers
+  "13-1161": 0.65  # Market Research Analysts
+  "11-9151": 0.60  # Social/Community Service Managers
+  "19-3022": 0.55  # Survey Researchers
+  "19-3094": 0.50  # Political Scientists (thin market)
+
+# ----------------------------------------------------------------------------
+# Metro weights (CBSA -> weight). Absent => 0 (won't appear in personal view).
+# Mirror config.yaml target_metros; rank by DC-focus default.
+# ----------------------------------------------------------------------------
+metro_weights:
+  "47900": 1.00  # DC
+  "35620": 0.80  # NYC
+  "14460": 0.75  # Boston
+  "41860": 0.60  # SF
+  "41940": 0.60  # San Jose
+  "42660": 0.65  # Seattle
+
+# ----------------------------------------------------------------------------
+# Manual cap-exempt org list (HIGH confidence — overrides automation)
+# Add policy / research / think-tank employers you care about.
+# Use legal-entity names where possible.
+# ----------------------------------------------------------------------------
+manual_cap_exempt_orgs:
+  - "BROOKINGS INSTITUTION"
+  - "CARNEGIE ENDOWMENT FOR INTERNATIONAL PEACE"
+  - "RAND CORPORATION"
+  - "CENTER FOR STRATEGIC AND INTERNATIONAL STUDIES"
+  - "ATLANTIC COUNCIL OF THE UNITED STATES"
+  - "PETERSON INSTITUTE FOR INTERNATIONAL ECONOMICS"
+  - "URBAN INSTITUTE"
+  - "RESOURCES FOR THE FUTURE"
+  - "WORLD RESOURCES INSTITUTE"
+  - "COUNCIL ON FOREIGN RELATIONS"
+  - "WOODROW WILSON INTERNATIONAL CENTER FOR SCHOLARS"
+  - "AMERICAN ENTERPRISE INSTITUTE"
+  - "HERITAGE FOUNDATION"
+  - "CENTER FOR AMERICAN PROGRESS"
+  - "PEW RESEARCH CENTER"
+  - "MITRE CORPORATION"
+  - "INSTITUTE FOR DEFENSE ANALYSES"
+  - "JOHNS HOPKINS UNIVERSITY"
+  - "JOHNS HOPKINS APPLIED PHYSICS LABORATORY"
+
+# Manual deny list (force NONE / cap-subject even if heuristics say otherwise)
+manual_cap_subject_orgs: []
+
+# Custom employer allow/deny for personal_top_targets view
+employer_allow_list: []
+employer_deny_list: []

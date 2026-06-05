@@ -1,0 +1,71 @@
+﻿2026-05-27 23:57:05,212 [INFO] h1b: plan: ['ingest'] (dry_run=False force=False)
+2026-05-27 23:57:05,212 [INFO] h1b: === stage: ingest ===
+
+DOL fiscal years: [2022, 2023, 2024, 2025]
+USCIS Hub fiscal years: [2020, 2021, 2022, 2023]  (Hub lags DOL by ~2 yrs)
+DOL OFLC LCA...
+2026-05-27 23:57:05,223 [INFO] h1b.common: downloading https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2022_Q4.xlsx -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\dol\lca\lca_fy2022.xlsx (force=False)
+2026-05-27 23:57:05,223 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.dol.gov:443
+2026-05-27 23:57:05,339 [DEBUG] urllib3.connectionpool: https://www.dol.gov:443 "GET /sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2022_Q4.xlsx HTTP/1.1" 200 56112204
+2026-05-27 23:57:06,250 [INFO] h1b.common: downloading https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2023_Q4.xlsx -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\dol\lca\lca_fy2023.xlsx (force=False)
+2026-05-27 23:57:06,250 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.dol.gov:443
+2026-05-27 23:57:06,346 [DEBUG] urllib3.connectionpool: https://www.dol.gov:443 "GET /sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2023_Q4.xlsx HTTP/1.1" 200 86344292
+2026-05-27 23:57:07,740 [INFO] h1b.common: downloading https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2024_Q4.xlsx -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\dol\lca\lca_fy2024.xlsx (force=False)
+2026-05-27 23:57:07,742 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.dol.gov:443
+2026-05-27 23:57:07,840 [DEBUG] urllib3.connectionpool: https://www.dol.gov:443 "GET /sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2024_Q4.xlsx HTTP/1.1" 200 83056843
+2026-05-27 23:57:09,177 [INFO] h1b.common: downloading https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2025_Q4.xlsx -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\dol\lca\lca_fy2025.xlsx (force=False)
+2026-05-27 23:57:09,177 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.dol.gov:443
+2026-05-27 23:57:09,289 [DEBUG] urllib3.connectionpool: https://www.dol.gov:443 "GET /sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2025_Q4.xlsx HTTP/1.1" 200 79134156
+2026-05-27 23:57:38,037 [INFO] h1b.ingest_dol: staged 105210 rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\dol\lca\fy2022.parquet
+2026-05-27 23:58:36,983 [INFO] h1b.ingest_dol: staged 115849 rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\dol\lca\fy2023.parquet
+2026-05-27 23:59:30,786 [INFO] h1b.ingest_dol: staged 110162 rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\dol\lca\fy2024.parquet
+2026-05-28 00:00:21,638 [INFO] h1b.ingest_dol: staged 106613 rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\dol\lca\fy2025.parquet
+USCIS Employer Hub...
+2026-05-28 00:00:21,653 [INFO] h1b.common: downloading https://www.uscis.gov/sites/default/files/document/data/h1b_datahubexport-2020.csv -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\uscis\employer_hub\hub_fy2020.csv (force=False)
+2026-05-28 00:00:21,653 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.uscis.gov:443
+2026-05-28 00:00:21,742 [DEBUG] urllib3.connectionpool: https://www.uscis.gov:443 "GET /sites/default/files/document/data/h1b_datahubexport-2020.csv HTTP/1.1" 200 1045455
+2026-05-28 00:00:21,837 [INFO] h1b.common: downloading https://www.uscis.gov/sites/default/files/document/data/h1b_datahubexport-2021.csv -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\uscis\employer_hub\hub_fy2021.csv (force=False)
+2026-05-28 00:00:21,837 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.uscis.gov:443
+2026-05-28 00:00:21,900 [DEBUG] urllib3.connectionpool: https://www.uscis.gov:443 "GET /sites/default/files/document/data/h1b_datahubexport-2021.csv HTTP/1.1" 200 1038790
+2026-05-28 00:00:21,994 [INFO] h1b.common: downloading https://www.uscis.gov/sites/default/files/document/data/h1b_datahubexport-2022.csv -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\uscis\employer_hub\hub_fy2022.csv (force=False)
+2026-05-28 00:00:21,994 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.uscis.gov:443
+2026-05-28 00:00:22,073 [DEBUG] urllib3.connectionpool: https://www.uscis.gov:443 "GET /sites/default/files/document/data/h1b_datahubexport-2022.csv HTTP/1.1" 200 1111201
+2026-05-28 00:00:22,173 [INFO] h1b.common: downloading https://www.uscis.gov/sites/default/files/document/data/h1b_datahubexport-2023.csv -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\uscis\employer_hub\hub_fy2023.csv (force=False)
+2026-05-28 00:00:22,173 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.uscis.gov:443
+2026-05-28 00:00:22,232 [DEBUG] urllib3.connectionpool: https://www.uscis.gov:443 "GET /sites/default/files/document/data/h1b_datahubexport-2023.csv HTTP/1.1" 200 617917
+2026-05-28 00:00:22,453 [INFO] h1b.ingest_uscis: staged 55239 USCIS Hub rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\uscis\hub_fy2020.parquet
+2026-05-28 00:00:22,612 [INFO] h1b.ingest_uscis: staged 60806 USCIS Hub rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\uscis\hub_fy2021.parquet
+2026-05-28 00:00:22,771 [INFO] h1b.ingest_uscis: staged 59983 USCIS Hub rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\uscis\hub_fy2022.parquet
+2026-05-28 00:00:22,882 [INFO] h1b.ingest_uscis: staged 33332 USCIS Hub rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\uscis\hub_fy2023.parquet
+BLS OEWS...
+2026-05-28 00:00:22,886 [INFO] h1b.common: downloading https://www.bls.gov/oes/special.requests/oesm24ma.zip -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\bls\oews\oewsm2024ma.zip (force=False)
+2026-05-28 00:00:22,886 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.bls.gov:443
+2026-05-28 00:00:22,977 [DEBUG] urllib3.connectionpool: https://www.bls.gov:443 "GET /oes/special.requests/oesm24ma.zip HTTP/1.1" 200 40189821
+2026-05-28 00:00:37,580 [INFO] h1b.ingest_bls: staged 150176 OEWS rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\bls\oews\oews_may2024_msa.parquet
+IPEDS / DAPIP...
+2026-05-28 00:00:37,580 [INFO] h1b.common: downloading https://nces.ed.gov/ipeds/datacenter/data/HD2023.zip -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\ipeds\HD2023.zip (force=False)
+2026-05-28 00:00:37,580 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): nces.ed.gov:443
+2026-05-28 00:00:37,995 [DEBUG] urllib3.connectionpool: https://nces.ed.gov:443 "GET /ipeds/datacenter/data/HD2023.zip HTTP/1.1" 200 None
+2026-05-28 00:00:39,718 [INFO] h1b.ingest_ipeds: staged 6163 IPEDS institutions -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\ipeds\title_iv_institutions.parquet
+Census CBSA delineation...
+2026-05-28 00:00:39,718 [INFO] h1b.common: downloading https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx -> C:\Users\Sidar\Desktop\Projects\tatistics\data\raw\census\cbsa_delineation_2023.xlsx (force=False)
+2026-05-28 00:00:39,718 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www2.census.gov:443
+2026-05-28 00:00:39,860 [DEBUG] urllib3.connectionpool: https://www2.census.gov:443 "GET /programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx HTTP/1.1" 200 143798
+2026-05-28 00:00:40,018 [INFO] h1b.ingest_census: staged 1917 CBSA-county rows -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\geo\cbsa_county_2023.parquet
+SEC EDGAR tickers...
+2026-05-28 00:00:40,018 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.sec.gov:443
+2026-05-28 00:00:40,114 [DEBUG] urllib3.connectionpool: https://www.sec.gov:443 "GET /files/company_tickers.json HTTP/1.1" 200 217811
+2026-05-28 00:00:40,196 [INFO] h1b.ingest_edgar: staged 10371 EDGAR companies -> C:\Users\Sidar\Desktop\Projects\tatistics\data\staging\edgar\company_tickers.parquet
+State WARN Act portals...
+2026-05-28 00:00:40,196 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): dol.ny.gov:443
+2026-05-28 00:00:40,311 [DEBUG] urllib3.connectionpool: https://dol.ny.gov:443 "GET /warn-notices HTTP/1.1" 301 None
+2026-05-28 00:00:40,337 [DEBUG] urllib3.connectionpool: https://dol.ny.gov:443 "GET /legacy-warn-notices HTTP/1.1" 200 None
+2026-05-28 00:00:40,352 [INFO] h1b.ingest_warn: WARN NY: 69 rows
+2026-05-28 00:00:40,352 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.mass.gov:443
+2026-05-28 00:00:40,479 [DEBUG] urllib3.connectionpool: https://www.mass.gov:443 "GET /lists/warn-notices HTTP/1.1" 403 3366
+2026-05-28 00:00:40,479 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): www.vec.virginia.gov:443
+2026-05-28 00:00:40,690 [DEBUG] urllib3.connectionpool: https://www.vec.virginia.gov:443 "GET /warn-notices HTTP/1.1" 200 None
+2026-05-28 00:00:40,705 [INFO] h1b.ingest_warn: WARN VA: 0 rows
+2026-05-28 00:00:40,705 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): does.dc.gov:443
+2026-05-28 00:00:40,865 [DEBUG] urllib3.connectionpool: https://does.dc.gov:443 "GET /page/warn-notifications HTTP/1.1" 404 None
+2026-05-28 00:00:40,865 [INFO] h1b: done in 215.7s

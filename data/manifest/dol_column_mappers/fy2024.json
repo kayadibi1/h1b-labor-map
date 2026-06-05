@@ -1,0 +1,26 @@
+{
+  "fiscal_year": 2024,
+  "logical_to_physical": {
+    "case_number": "CASE_NUMBER",
+    "case_status": "CASE_STATUS",
+    "decision_date": "DECISION_DATE",
+    "employer_city": "EMPLOYER_CITY",
+    "employer_name": "EMPLOYER_NAME",
+    "employer_state": "EMPLOYER_STATE",
+    "full_time_position": "FULL_TIME_POSITION",
+    "job_title": "JOB_TITLE",
+    "naics_code": "NAICS_CODE",
+    "pw_unit_of_pay": "PW_UNIT_OF_PAY",
+    "pw_wage": "PREVAILING_WAGE",
+    "pw_wage_level": "PW_WAGE_LEVEL",
+    "soc_code": "SOC_CODE",
+    "soc_title": "SOC_TITLE",
+    "wage_rate_from": "WAGE_RATE_OF_PAY_FROM",
+    "wage_rate_to": "WAGE_RATE_OF_PAY_TO",
+    "wage_unit_of_pay": "WAGE_UNIT_OF_PAY",
+    "worksite_city": "WORKSITE_CITY",
+    "worksite_state": "WORKSITE_STATE"
+  },
+  "missing_preferred": [],
+  "missing_required": []
+}

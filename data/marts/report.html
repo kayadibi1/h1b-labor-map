@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Labor Market × H-1B Sponsorship — Personal Targeting Report</title>
+<style>
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: #0f172a;
+  background: #f8fafc;
+  line-height: 1.55;
+}
+body { max-width: 1180px; margin: 0 auto; padding: 32px 28px 80px; }
+
+h1 { font-size: 32px; margin: 0 0 4px; color: #0f172a; letter-spacing: -0.02em; }
+h2 { font-size: 22px; margin: 56px 0 12px; padding-bottom: 8px;
+     border-bottom: 2px solid #e2e8f0; color: #0f172a; letter-spacing: -0.01em; }
+h3 { font-size: 16px; margin: 28px 0 8px; color: #1e293b; }
+p, li { font-size: 14.5px; color: #334155; }
+small { color: #64748b; }
+code { background: #eef2ff; color: #3730a3; padding: 1px 5px; border-radius: 3px;
+       font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 13px; }
+a { color: #1d4ed8; }
+
+.subhead { color: #64748b; font-size: 14.5px; margin: 0 0 24px; }
+
+.callout {
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 16px 0;
+  font-size: 14.5px;
+}
+.callout.warn   { background: #fef3c7; border-left: 4px solid #d97706; }
+.callout.bad    { background: #fee2e2; border-left: 4px solid #dc2626; }
+.callout.good   { background: #d1fae5; border-left: 4px solid #059669; }
+.callout.info   { background: #dbeafe; border-left: 4px solid #2563eb; }
+.callout.note   { background: #f1f5f9; border-left: 4px solid #64748b; }
+
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0 28px; }
+.kpi { background: white; border: 1px solid #e2e8f0; border-radius: 8px;
+       padding: 14px 16px; }
+.kpi .label { font-size: 12px; color: #64748b; text-transform: uppercase;
+              letter-spacing: 0.04em; }
+.kpi .value { font-size: 24px; font-weight: 600; color: #0f172a; margin-top: 4px; }
+.kpi .sub { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 8px;
+        padding: 18px 20px; margin: 12px 0; }
+.card h3 { margin-top: 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 12px 0 18px;
+        font-size: 13.5px; }
+th { text-align: left; padding: 10px 8px; background: #f1f5f9;
+     border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #1e293b;
+     font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+td { padding: 10px 8px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+tr:nth-child(even) td { background: #fafbfc; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.tier-HIGH   { color: #047857; font-weight: 600; }
+.tier-MEDIUM { color: #b45309; font-weight: 600; }
+.tier-LOW    { color: #b91c1c; }
+
+.branch-CAP_EXEMPT  { color: #047857; }
+.branch-CAP_SUBJECT { color: #b45309; }
+
+.realism-bar { display: inline-block; height: 14px; vertical-align: middle;
+               background: #34d399; border-radius: 3px; min-width: 4px; }
+.realism-bar.low { background: #fde68a; }
+.realism-bar.med { background: #fbbf24; }
+
+.bar-chart { width: 100%; height: auto; }
+
+footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid #e2e8f0;
+         font-size: 12px; color: #94a3b8; text-align: center; }
+</style>
+</head>
+<body>
+<header><h1>US Labor Market × H-1B Sponsorship — Personal Targeting Report</h1><p class="subhead">Generated 2026-05-28 04:11 UTC from real DOL OFLC + USCIS Employer Hub + BLS OEWS + IPEDS data. Window: FY2022–FY2025 (DOL), FY2020–FY2023 (USCIS).</p></header>
+    <section>
+      <h2>Executive summary</h2>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="label">CIP code</div>
+          <div class="value">45.0901</div>
+          <div class="sub">MA, SAIS — International Relations / Strategic Studies</div></div>
+        <div class="kpi"><div class="label">STEM-OPT</div>
+          <div class="value" style="color:#b91c1c;">
+            NO</div>
+          <div class="sub">NON-STEM (12-month runway)</div></div>
+        <div class="kpi"><div class="label">Pipeline branch</div>
+          <div class="value">cap-exempt first</div>
+          <div class="sub">gates.cap_exempt_only = True</div></div>
+        <div class="kpi"><div class="label">Mart rows</div>
+          <div class="value">163,501</div>
+          <div class="sub">52,503 unique employers</div></div>
+      </div>
+
+      <div class="callout good">
+        <strong>Strategic verdict.</strong> Because your CIP code (<code>45.0901</code>)
+        is not on the live SEVP STEM list, you have a 12-month OPT runway and at most
+        one cap-subject lottery shot. Under the FY2027+ wage-weighted rule, an entry-level
+        (Level I) cap-subject offer faces an effective selection rate of about
+        <strong>17%</strong>
+        (down from a flat 35% in FY2026). A Level IV offer would be
+        68%, but a first-job offer for a SAIS grad is almost
+        always Level I or II.
+        <br><br>
+        The math says cap-exempt employers — universities, affiliated nonprofits,
+        nonprofit research orgs — are not just preferable, they are the dominant
+        realistic path. They bypass the lottery entirely. This report is structured
+        around that reality.
+      </div>
+
+      
+      <h3>Your top targets (personal score, post all gates)</h3>
+      <p class="subhead">Filtered to your target SOCs, target metros (or off-map), cap-exempt only,
+      excluding staffing firms, wage ≥ $75,000, evidence tier ≥ MEDIUM.</p>
+      <table>
+        <thead><tr>
+          <th>Employer</th><th>Role</th><th>CBSA</th><th>Branch</th>
+          <th>Initial approvals</th><th>Approval rate</th>
+          <th>Median wage filed</th><th>Realism</th>
+          <th>Personal score</th><th>Evidence</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Seattle University</strong>
+                <br><small>SEATTLE UNIVERSITY</small></td>
+            <td>13-1111 · Management Analysts</td>
+            <td>42660</td>
+            <td><span class="branch-CAP_EXEMPT">CAP_EXEMPT</span>
+                <br><small>HIGHER_ED</small></td>
+            <td class="num">13</td>
+            <td class="num">100%</td>
+            <td class="num">$80,000</td>
+            <td class="num"><span class="realism-bar " style="width:100px"></span> <small>1.00</small></td>
+            <td class="num">0.885</td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>University of Idaho</strong>
+                <br><small>UNIVERSITY OF IDAHO</small></td>
+            <td>15-2041 · Statisticians</td>
+            <td>off-map</td>
+            <td><span class="branch-CAP_EXEMPT">CAP_EXEMPT</span>
+                <br><small>HIGHER_ED</small></td>
+            <td class="num">39</td>
+            <td class="num">100%</td>
+            <td class="num">$76,752</td>
+            <td class="num"><span class="realism-bar " style="width:100px"></span> <small>1.00</small></td>
+            <td class="num">0.850</td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Rollins College</strong>
+                <br><small>ROLLINS COLLEGE</small></td>
+            <td>15-2041 · Statisticians</td>
+            <td>off-map</td>
+            <td><span class="branch-CAP_EXEMPT">CAP_EXEMPT</span>
+                <br><small>HIGHER_ED</small></td>
+            <td class="num">13</td>
+            <td class="num">100%</td>
+            <td class="num">$107,160</td>
+            <td class="num"><span class="realism-bar " style="width:100px"></span> <small>1.00</small></td>
+            <td class="num">0.850</td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        </tbody>
+      </table>
+    
+    </section>
+    
+    <h2>The two regime changes that shape your odds</h2>
+
+    <h3>1. Beneficiary-centric selection (effective FY2025)</h3>
+    <p>USCIS now treats each unique beneficiary, not each registration, as a
+    single lottery entry per employer. This eliminated the gaming where one
+    candidate could be registered by 5+ shell employers. FY2026 was the second
+    cycle under this rule; the published selection rate was
+    <strong>35%</strong>
+    (118,660 selections out of 336,153 eligible beneficiaries).</p>
+
+    <h3>2. Wage-weighted lottery (effective Feb 27, 2026 — applies to FY2027+ registrations)</h3>
+    <p>The new rule grants more lottery entries to higher-wage offers:
+    Level IV = 4 entries, Level III = 3, Level II = 2, Level I = 1. Combined
+    with beneficiary-centric selection, the effective per-level selection rate
+    for the FY2027 lottery (which ran in March 2026) looks like this:</p>
+
+    <svg class="bar-chart" viewBox="0 0 760 120" xmlns="http://www.w3.org/2000/svg" role="img"><text x="282" y="22.0" text-anchor="end" font-size="12" fill="#334155">Level I — 1 ticket</text><rect x="290" y="8" width="97" height="16" fill="#d97706" rx="2"/><text x="393" y="22.0" font-size="12" fill="#1e293b">17.0%</text><text x="282" y="50.0" text-anchor="end" font-size="12" fill="#334155">Level II — 2 tickets</text><rect x="290" y="36" width="195" height="16" fill="#d97706" rx="2"/><text x="491" y="50.0" font-size="12" fill="#1e293b">34.0%</text><text x="282" y="78.0" text-anchor="end" font-size="12" fill="#334155">Level III — 3 tickets</text><rect x="290" y="64" width="292" height="16" fill="#d97706" rx="2"/><text x="588" y="78.0" font-size="12" fill="#1e293b">51.0%</text><text x="282" y="106.0" text-anchor="end" font-size="12" fill="#334155">Level IV — 4 tickets</text><rect x="290" y="92" width="390" height="16" fill="#d97706" rx="2"/><text x="686" y="106.0" font-size="12" fill="#1e293b">68.0%</text></svg>
+
+    <div class="callout warn">
+      <strong>What this means for a SAIS grad.</strong> Your first offer is
+      almost certainly Level I or II by DOL prevailing-wage criteria
+      (no prior US work experience, no advanced specialization). That puts
+      your cap-subject realistic conversion in the range of
+      <strong>17%–34%</strong>
+      <em>before</em> approval-rate, sample-size, and staffing-firm penalties.
+      The cap-exempt path bypasses this entirely.
+    </div>
+    
+    <h2>The cap-exempt universe</h2>
+    <p class="subhead">These employers bypass the lottery. They can sponsor anytime
+    in the year. For a non-STEM applicant this is the main game.</p>
+
+    <h3>Cap-exempt subcategories (initial approvals over the 4-yr window)</h3>
+    <div style="display:flex;align-items:center;gap:24px;"><svg viewBox="0 0 220 220" width="220" height="220" xmlns="http://www.w3.org/2000/svg"><path d="M 110.00 6.00 A 104.00 104.00 0 1 1 67.31 15.17 L 85.24 55.00 A 60.32 60.32 0 1 0 110.00 49.68 Z" fill="#0f766e"/><path d="M 67.31 15.17 A 104.00 104.00 0 0 1 110.00 6.00 L 110.00 49.68 A 60.32 60.32 0 0 0 85.24 55.00 Z" fill="#0891b2"/><text x="110.0" y="104.0" text-anchor="middle" font-size="13" fill="#64748b">Total</text><text x="110.0" y="124.0" text-anchor="middle" font-size="18" font-weight="600" fill="#0f172a">435,137</text></svg><div style="flex:1;"><div style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:4px;"><span style="width:10px;height:10px;background:#0f766e;display:inline-block;border-radius:2px;"></span><span style="flex:1;color:#334155;">HIGHER_ED</span><span style="color:#94a3b8;">405,842 (93.3%)</span></div><div style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:4px;"><span style="width:10px;height:10px;background:#0891b2;display:inline-block;border-radius:2px;"></span><span style="flex:1;color:#334155;">AFFILIATED_NONPROFIT</span><span style="color:#94a3b8;">29,295 (6.7%)</span></div></div></div>
+
+    <h3>Top 25 cap-exempt sponsors by initial approvals</h3>
+    <svg class="bar-chart" viewBox="0 0 760 558" xmlns="http://www.w3.org/2000/svg" role="img"><text x="282" y="19.0" text-anchor="end" font-size="12" fill="#334155">Johns Hopkins University</text><rect x="290" y="8" width="390" height="10" fill="#0f766e" rx="2"/><text x="686" y="19.0" font-size="12" fill="#1e293b">29,100</text><text x="282" y="41.0" text-anchor="end" font-size="12" fill="#334155">Harvard University</text><rect x="290" y="30" width="355" height="10" fill="#0f766e" rx="2"/><text x="651" y="41.0" font-size="12" fill="#1e293b">26,496</text><text x="282" y="63.0" text-anchor="end" font-size="12" fill="#334155">UNIVERSITY OF FLORIDA</text><rect x="290" y="52" width="336" height="10" fill="#0f766e" rx="2"/><text x="632" y="63.0" font-size="12" fill="#1e293b">25,134</text><text x="282" y="85.0" text-anchor="end" font-size="12" fill="#334155">Yale University</text><rect x="290" y="74" width="259" height="10" fill="#0f766e" rx="2"/><text x="555" y="85.0" font-size="12" fill="#1e293b">19,390</text><text x="282" y="107.0" text-anchor="end" font-size="12" fill="#334155">Emory University</text><rect x="290" y="96" width="224" height="10" fill="#0f766e" rx="2"/><text x="520" y="107.0" font-size="12" fill="#1e293b">16,750</text><text x="282" y="129.0" text-anchor="end" font-size="12" fill="#334155">The University of Texas at Austin</text><rect x="290" y="118" width="215" height="10" fill="#0f766e" rx="2"/><text x="511" y="129.0" font-size="12" fill="#1e293b">16,092</text><text x="282" y="151.0" text-anchor="end" font-size="12" fill="#334155">UNIVERSITY OF CALIFORNIA, SAN DIEGO</text><rect x="290" y="140" width="204" height="10" fill="#0f766e" rx="2"/><text x="500" y="151.0" font-size="12" fill="#1e293b">15,268</text><text x="282" y="173.0" text-anchor="end" font-size="12" fill="#334155">University of California, Berkeley</text><rect x="290" y="162" width="196" height="10" fill="#0f766e" rx="2"/><text x="492" y="173.0" font-size="12" fill="#1e293b">14,694</text><text x="282" y="195.0" text-anchor="end" font-size="12" fill="#334155">University of Utah</text><rect x="290" y="184" width="174" height="10" fill="#0f766e" rx="2"/><text x="470" y="195.0" font-size="12" fill="#1e293b">13,050</text><text x="282" y="217.0" text-anchor="end" font-size="12" fill="#334155">Northwestern University</text><rect x="290" y="206" width="164" height="10" fill="#0f766e" rx="2"/><text x="460" y="217.0" font-size="12" fill="#1e293b">12,274</text><text x="282" y="239.0" text-anchor="end" font-size="12" fill="#334155">MICHIGAN STATE UNIVERSITY</text><rect x="290" y="228" width="158" height="10" fill="#0f766e" rx="2"/><text x="454" y="239.0" font-size="12" fill="#1e293b">11,832</text><text x="282" y="261.0" text-anchor="end" font-size="12" fill="#334155">University of California, Davis</text><rect x="290" y="250" width="133" height="10" fill="#0f766e" rx="2"/><text x="429" y="261.0" font-size="12" fill="#1e293b">9,954</text><text x="282" y="283.0" text-anchor="end" font-size="12" fill="#334155">Icahn School of Medicine at Mount Sinai</text><rect x="290" y="272" width="125" height="10" fill="#0f766e" rx="2"/><text x="421" y="283.0" font-size="12" fill="#1e293b">9,366</text><text x="282" y="305.0" text-anchor="end" font-size="12" fill="#334155">Cornell University</text><rect x="290" y="294" width="113" height="10" fill="#0f766e" rx="2"/><text x="409" y="305.0" font-size="12" fill="#1e293b">8,448</text><text x="282" y="327.0" text-anchor="end" font-size="12" fill="#334155">New York University</text><rect x="290" y="316" width="112" height="10" fill="#0f766e" rx="2"/><text x="408" y="327.0" font-size="12" fill="#1e293b">8,400</text><text x="282" y="349.0" text-anchor="end" font-size="12" fill="#334155">University of California, Los Angeles</text><rect x="290" y="338" width="109" height="10" fill="#0f766e" rx="2"/><text x="405" y="349.0" font-size="12" fill="#1e293b">8,192</text><text x="282" y="371.0" text-anchor="end" font-size="12" fill="#334155">UNIVERSITY OF MIAMI</text><rect x="290" y="360" width="105" height="10" fill="#0f766e" rx="2"/><text x="401" y="371.0" font-size="12" fill="#1e293b">7,869</text><text x="282" y="393.0" text-anchor="end" font-size="12" fill="#334155">Northeastern University</text><rect x="290" y="382" width="95" height="10" fill="#0f766e" rx="2"/><text x="391" y="393.0" font-size="12" fill="#1e293b">7,106</text><text x="282" y="415.0" text-anchor="end" font-size="12" fill="#334155">Carnegie Mellon University</text><rect x="290" y="404" width="94" height="10" fill="#0f766e" rx="2"/><text x="390" y="415.0" font-size="12" fill="#1e293b">7,068</text><text x="282" y="437.0" text-anchor="end" font-size="12" fill="#334155">California Institute of Technology</text><rect x="290" y="426" width="93" height="10" fill="#0f766e" rx="2"/><text x="389" y="437.0" font-size="12" fill="#1e293b">7,000</text><text x="282" y="459.0" text-anchor="end" font-size="12" fill="#334155">Oregon State University</text><rect x="290" y="448" width="88" height="10" fill="#0f766e" rx="2"/><text x="384" y="459.0" font-size="12" fill="#1e293b">6,615</text><text x="282" y="481.0" text-anchor="end" font-size="12" fill="#334155">Texas Tech University</text><rect x="290" y="470" width="82" height="10" fill="#0f766e" rx="2"/><text x="378" y="481.0" font-size="12" fill="#1e293b">6,138</text><text x="282" y="503.0" text-anchor="end" font-size="12" fill="#334155">University of Rochester</text><rect x="290" y="492" width="74" height="10" fill="#0f766e" rx="2"/><text x="370" y="503.0" font-size="12" fill="#1e293b">5,544</text><text x="282" y="525.0" text-anchor="end" font-size="12" fill="#334155">Baylor College of Medicine</text><rect x="290" y="514" width="66" height="10" fill="#0f766e" rx="2"/><text x="362" y="525.0" font-size="12" fill="#1e293b">4,998</text><text x="282" y="547.0" text-anchor="end" font-size="12" fill="#334155">Clemson University</text><rect x="290" y="536" width="63" height="10" fill="#0f766e" rx="2"/><text x="359" y="547.0" font-size="12" fill="#1e293b">4,746</text></svg>
+
+    <div class="callout note">
+      <strong>Read this honestly.</strong> The top names are big medical schools
+      and major research universities. For a SAIS / policy / IR grad, the actual
+      hireable roles are typically <em>research analyst</em>, <em>policy associate</em>,
+      <em>program manager</em>, or <em>statistician</em> positions inside those
+      institutions, plus think tanks and policy nonprofits (which you should
+      have populated in <code>user_profile.yaml &gt; manual_cap_exempt_orgs</code>).
+    </div>
+
+    <h3>Where the cap-exempt approvals concentrate (top 20 SOCs)</h3>
+    <svg class="bar-chart" viewBox="0 0 760 448" xmlns="http://www.w3.org/2000/svg" role="img"><text x="282" y="19.0" text-anchor="end" font-size="12" fill="#334155">25-1021.00 · Computer Science Teachers, Postsecondary</text><rect x="290" y="8" width="390" height="10" fill="#0891b2" rx="2"/><text x="686" y="19.0" font-size="12" fill="#1e293b">11,566</text><text x="282" y="41.0" text-anchor="end" font-size="12" fill="#334155">25-1032.00 · Engineering Teachers, Postsecondary</text><rect x="290" y="30" width="353" height="10" fill="#0891b2" rx="2"/><text x="649" y="41.0" font-size="12" fill="#1e293b">10,487</text><text x="282" y="63.0" text-anchor="end" font-size="12" fill="#334155">19-1042.00 · Medical Scientists, Except Epidemiologists</text><rect x="290" y="52" width="322" height="10" fill="#0891b2" rx="2"/><text x="618" y="63.0" font-size="12" fill="#1e293b">9,566</text><text x="282" y="85.0" text-anchor="end" font-size="12" fill="#334155">25-1071.00 · Health Specialties Teachers, Postsecondary</text><rect x="290" y="74" width="302" height="10" fill="#0891b2" rx="2"/><text x="598" y="85.0" font-size="12" fill="#1e293b">8,985</text><text x="282" y="107.0" text-anchor="end" font-size="12" fill="#334155">19-1021.00 · Biochemists and Biophysicists</text><rect x="290" y="96" width="294" height="10" fill="#0891b2" rx="2"/><text x="590" y="107.0" font-size="12" fill="#1e293b">8,743</text><text x="282" y="129.0" text-anchor="end" font-size="12" fill="#334155">25-1011.00 · Business Teachers, Postsecondary</text><rect x="290" y="118" width="286" height="10" fill="#0891b2" rx="2"/><text x="582" y="129.0" font-size="12" fill="#1e293b">8,509</text><text x="282" y="151.0" text-anchor="end" font-size="12" fill="#334155">19-1029.01 · Bioinformatics Scientists</text><rect x="290" y="140" width="286" height="10" fill="#0891b2" rx="2"/><text x="582" y="151.0" font-size="12" fill="#1e293b">8,484</text><text x="282" y="173.0" text-anchor="end" font-size="12" fill="#334155">19-2012.00 · Physicists</text><rect x="290" y="162" width="284" height="10" fill="#0891b2" rx="2"/><text x="580" y="173.0" font-size="12" fill="#1e293b">8,451</text><text x="282" y="195.0" text-anchor="end" font-size="12" fill="#334155">19-1029.02 · Molecular and Cellular Biologists</text><rect x="290" y="184" width="269" height="10" fill="#0891b2" rx="2"/><text x="565" y="195.0" font-size="12" fill="#1e293b">7,979</text><text x="282" y="217.0" text-anchor="end" font-size="12" fill="#334155">19-2031.00 · Chemists</text><rect x="290" y="206" width="268" height="10" fill="#0891b2" rx="2"/><text x="564" y="217.0" font-size="12" fill="#1e293b">7,974</text><text x="282" y="239.0" text-anchor="end" font-size="12" fill="#334155">25-1022.00 · Mathematical Science Teachers, Postsecondar…</text><rect x="290" y="228" width="238" height="10" fill="#0891b2" rx="2"/><text x="534" y="239.0" font-size="12" fill="#1e293b">7,070</text><text x="282" y="261.0" text-anchor="end" font-size="12" fill="#334155">15-1221.00 · Computer and Information Research Scientist…</text><rect x="290" y="250" width="223" height="10" fill="#0891b2" rx="2"/><text x="519" y="261.0" font-size="12" fill="#1e293b">6,625</text><text x="282" y="283.0" text-anchor="end" font-size="12" fill="#334155">25-1042.00 · Biological Science Teachers, Postsecondary</text><rect x="290" y="272" width="219" height="10" fill="#0891b2" rx="2"/><text x="515" y="283.0" font-size="12" fill="#1e293b">6,516</text><text x="282" y="305.0" text-anchor="end" font-size="12" fill="#334155">25-1054.00 · Physics Teachers, Postsecondary</text><rect x="290" y="294" width="212" height="10" fill="#0891b2" rx="2"/><text x="508" y="305.0" font-size="12" fill="#1e293b">6,307</text><text x="282" y="327.0" text-anchor="end" font-size="12" fill="#334155">25-1124.00 · Foreign Language and Literature Teachers, P…</text><rect x="290" y="316" width="201" height="10" fill="#0891b2" rx="2"/><text x="497" y="327.0" font-size="12" fill="#1e293b">5,980</text><text x="282" y="349.0" text-anchor="end" font-size="12" fill="#334155">25-1063.00 · Economics Teachers, Postsecondary</text><rect x="290" y="338" width="199" height="10" fill="#0891b2" rx="2"/><text x="495" y="349.0" font-size="12" fill="#1e293b">5,918</text><text x="282" y="371.0" text-anchor="end" font-size="12" fill="#334155">19-2032.00 · Materials Scientists</text><rect x="290" y="360" width="176" height="10" fill="#0891b2" rx="2"/><text x="472" y="371.0" font-size="12" fill="#1e293b">5,246</text><text x="282" y="393.0" text-anchor="end" font-size="12" fill="#334155">15-2051.00 · Data Scientists</text><rect x="290" y="382" width="172" height="10" fill="#0891b2" rx="2"/><text x="468" y="393.0" font-size="12" fill="#1e293b">5,129</text><text x="282" y="415.0" text-anchor="end" font-size="12" fill="#334155">25-1121.00 · Art, Drama, and Music Teachers, Postseconda…</text><rect x="290" y="404" width="163" height="10" fill="#0891b2" rx="2"/><text x="459" y="415.0" font-size="12" fill="#1e293b">4,855</text><text x="282" y="437.0" text-anchor="end" font-size="12" fill="#334155">19-1022.00 · Microbiologists</text><rect x="290" y="426" width="158" height="10" fill="#0891b2" rx="2"/><text x="454" y="437.0" font-size="12" fill="#1e293b">4,704</text></svg>
+    <p><small>Most cap-exempt approvals go to faculty, postdoc, and research-scientist
+    roles — not SAIS-fit analyst roles. That's why your <em>personal_top_targets</em>
+    list is short: the intersection is genuinely thin. Use this view to gauge whether
+    you should broaden your SOC list (e.g., add bioinformatics-adjacent roles if your
+    quant skills allow).</small></p>
+    
+    <h2>Cap-subject reality check</h2>
+    <p class="subhead">If you do choose to enter the lottery, these are the
+    cap-subject employers most likely to convert for a SAIS-fit role. Realism
+    already accounts for the wage-weighted lottery.</p>
+
+    <div class="card">
+      <strong>Cross-mart wage-level mix.</strong> Across all 155,998 cap-subject
+      rows, employers' wage-level filings average:
+      Level I = <strong>19%</strong> (17% effective lottery),
+      Level II = <strong>37%</strong> (34%),
+      Level III = <strong>19%</strong> (51%),
+      Level IV = <strong>19%</strong> (68%).
+      An employer who files mostly Level I is both a worse cultural signal
+      and a worse lottery bet for you.
+    </div>
+
+    <h3>Top 20 cap-subject sponsors in your target SOCs</h3>
+    <table>
+      <thead><tr>
+        <th>Employer</th><th>SOC</th><th>CBSA</th>
+        <th>LCAs (4yr)</th><th>Initial approvals</th>
+        <th>Approval rate</th><th>% Level I</th>
+        <th>Median wage</th><th>Realism (w/ lottery)</th><th>Evidence</th>
+      </tr></thead>
+      <tbody>
+          <tr>
+            <td><strong>IQVIA RDS Inc.</strong>
+                
+            </td>
+            <td>13-1111</td>
+            <td>off-map</td>
+            <td class="num">1</td>
+            <td class="num">24</td>
+            <td class="num">100%</td>
+            <td class="num">0%</td>
+            <td class="num">$199,349</td>
+            <td class="num"><span class="realism-bar " style="width:68px"></span> <small>0.68</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Aetna Resources LLC</strong>
+                
+            </td>
+            <td>15-2041</td>
+            <td>off-map</td>
+            <td class="num">3</td>
+            <td class="num">186</td>
+            <td class="num">100%</td>
+            <td class="num">0%</td>
+            <td class="num">$176,000</td>
+            <td class="num"><span class="realism-bar " style="width:68px"></span> <small>0.68</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Black &amp; Veatch Corporation</strong>
+                
+            </td>
+            <td>13-1111</td>
+            <td>41940</td>
+            <td class="num">1</td>
+            <td class="num">64</td>
+            <td class="num">100%</td>
+            <td class="num">0%</td>
+            <td class="num">$191,464</td>
+            <td class="num"><span class="realism-bar " style="width:68px"></span> <small>0.68</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>IQVIA RDS Inc.</strong>
+                
+            </td>
+            <td>13-2051</td>
+            <td>35620</td>
+            <td class="num">1</td>
+            <td class="num">24</td>
+            <td class="num">100%</td>
+            <td class="num">0%</td>
+            <td class="num">$205,000</td>
+            <td class="num"><span class="realism-bar " style="width:68px"></span> <small>0.68</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>General Motors</strong>
+                
+            </td>
+            <td>13-2051</td>
+            <td>off-map</td>
+            <td class="num">1</td>
+            <td class="num">204</td>
+            <td class="num">100%</td>
+            <td class="num">0%</td>
+            <td class="num">$133,903</td>
+            <td class="num"><span class="realism-bar " style="width:67px"></span> <small>0.68</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Meta Platforms, Inc.</strong>
+                
+            </td>
+            <td>13-1111</td>
+            <td>35620</td>
+            <td class="num">1</td>
+            <td class="num">1,420</td>
+            <td class="num">99%</td>
+            <td class="num">0%</td>
+            <td class="num">$163,919</td>
+            <td class="num"><span class="realism-bar " style="width:67px"></span> <small>0.68</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Caremark LLC</strong>
+                
+            </td>
+            <td>15-2041</td>
+            <td>off-map</td>
+            <td class="num">1</td>
+            <td class="num">135</td>
+            <td class="num">99%</td>
+            <td class="num">0%</td>
+            <td class="num">$155,000</td>
+            <td class="num"><span class="realism-bar " style="width:67px"></span> <small>0.67</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>IQVIA Inc.</strong>
+                
+            </td>
+            <td>15-2031</td>
+            <td>14460</td>
+            <td class="num">1</td>
+            <td class="num">123</td>
+            <td class="num">98%</td>
+            <td class="num">0%</td>
+            <td class="num">$133,614</td>
+            <td class="num"><span class="realism-bar " style="width:66px"></span> <small>0.67</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>IQVIA Inc.</strong>
+                
+            </td>
+            <td>13-1111</td>
+            <td>14460</td>
+            <td class="num">1</td>
+            <td class="num">123</td>
+            <td class="num">98%</td>
+            <td class="num">0%</td>
+            <td class="num">$180,000</td>
+            <td class="num"><span class="realism-bar " style="width:66px"></span> <small>0.67</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>IQVIA Inc.</strong>
+                
+            </td>
+            <td>15-2031</td>
+            <td>41860</td>
+            <td class="num">3</td>
+            <td class="num">123</td>
+            <td class="num">98%</td>
+            <td class="num">0%</td>
+            <td class="num">$202,700</td>
+            <td class="num"><span class="realism-bar " style="width:66px"></span> <small>0.67</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Stanford Health Care</strong>
+                
+            </td>
+            <td>15-2031</td>
+            <td>41860</td>
+            <td class="num">1</td>
+            <td class="num">57</td>
+            <td class="num">98%</td>
+            <td class="num">0%</td>
+            <td class="num">$94,428</td>
+            <td class="num"><span class="realism-bar " style="width:66px"></span> <small>0.67</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>UBS Securities LLC</strong>
+                
+            </td>
+            <td>13-2051</td>
+            <td>35620</td>
+            <td class="num">1</td>
+            <td class="num">45</td>
+            <td class="num">98%</td>
+            <td class="num">0%</td>
+            <td class="num">$325,000</td>
+            <td class="num"><span class="realism-bar " style="width:66px"></span> <small>0.67</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>BLIZZARD ENTERTAINMENT, INC.</strong>
+                
+            </td>
+            <td>13-1161</td>
+            <td>off-map</td>
+            <td class="num">1</td>
+            <td class="num">75</td>
+            <td class="num">97%</td>
+            <td class="num">0%</td>
+            <td class="num">$107,640</td>
+            <td class="num"><span class="realism-bar " style="width:66px"></span> <small>0.66</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Charles Schwab &amp; Company, Inc.</strong>
+                
+            </td>
+            <td>15-2031</td>
+            <td>off-map</td>
+            <td class="num">1</td>
+            <td class="num">118</td>
+            <td class="num">97%</td>
+            <td class="num">0%</td>
+            <td class="num">$165,000</td>
+            <td class="num"><span class="realism-bar " style="width:65px"></span> <small>0.66</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Illumina, Inc.</strong>
+                
+            </td>
+            <td>13-2051</td>
+            <td>off-map</td>
+            <td class="num">1</td>
+            <td class="num">114</td>
+            <td class="num">96%</td>
+            <td class="num">0%</td>
+            <td class="num">$130,000</td>
+            <td class="num"><span class="realism-bar " style="width:65px"></span> <small>0.65</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Citadel Americas Services LLC</strong>
+                
+            </td>
+            <td>15-2031</td>
+            <td>35620</td>
+            <td class="num">1</td>
+            <td class="num">22</td>
+            <td class="num">96%</td>
+            <td class="num">0%</td>
+            <td class="num">$200,000</td>
+            <td class="num"><span class="realism-bar " style="width:65px"></span> <small>0.65</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>TriNet USA, Inc.</strong>
+                
+            </td>
+            <td>15-2031</td>
+            <td>off-map</td>
+            <td class="num">5</td>
+            <td class="num">35</td>
+            <td class="num">100%</td>
+            <td class="num">0%</td>
+            <td class="num">$160,000</td>
+            <td class="num"><span class="realism-bar " style="width:57px"></span> <small>0.58</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Citadel Enterprise Americas Services LLC</strong>
+                
+            </td>
+            <td>15-2031</td>
+            <td>35620</td>
+            <td class="num">1</td>
+            <td class="num">8</td>
+            <td class="num">100%</td>
+            <td class="num">0%</td>
+            <td class="num">$200,000</td>
+            <td class="num"><span class="realism-bar " style="width:54px"></span> <small>0.54</small></td>
+            <td><span class="tier-MEDIUM">
+                MEDIUM</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>IQVIA Inc.</strong>
+                
+            </td>
+            <td>13-1111</td>
+            <td>off-map</td>
+            <td class="num">8</td>
+            <td class="num">123</td>
+            <td class="num">98%</td>
+            <td class="num">12%</td>
+            <td class="num">$165,444</td>
+            <td class="num"><span class="realism-bar " style="width:52px"></span> <small>0.52</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        
+          <tr>
+            <td><strong>IQVIA RDS Inc.</strong>
+                
+            </td>
+            <td>15-2031</td>
+            <td>off-map</td>
+            <td class="num">2</td>
+            <td class="num">24</td>
+            <td class="num">100%</td>
+            <td class="num">0%</td>
+            <td class="num">$140,013</td>
+            <td class="num"><span class="realism-bar " style="width:51px"></span> <small>0.51</small></td>
+            <td><span class="tier-HIGH">
+                HIGH</span></td>
+          </tr>
+        </tbody>
+    </table>
+    
+    <h2>Red flags — avoid or de-prioritize</h2>
+    <p class="subhead">High volume + low approval rate, mostly Level I, or known
+    staff-augmentation pattern. These employers will dominate naive rankings;
+    your pipeline filters them out by default.</p>
+    <table>
+      <thead><tr><th>Employer</th><th>LCAs (4yr)</th><th>Initial approvals</th>
+      <th>Approval rate</th><th>% Level I</th><th>Why flagged</th></tr></thead>
+      <tbody>
+          <tr>
+            <td><strong>COGNIZANT TECHNOLOGY SOLUTIONS US CORP</strong></td>
+            <td class="num">10,202</td>
+            <td class="num">70,490</td>
+            <td class="num">82%</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>INFOSYS LIMITED</strong></td>
+            <td class="num">5,008</td>
+            <td class="num">75,774</td>
+            <td class="num">85%</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>TATA CONSULTANCY SERVICES LIMITED</strong></td>
+            <td class="num">2,461</td>
+            <td class="num">0</td>
+            <td class="num">—</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Deloitte Consulting LLP</strong></td>
+            <td class="num">2,119</td>
+            <td class="num">9,580</td>
+            <td class="num">90%</td>
+            <td class="num">10%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Tata Consultancy Services Limited</strong></td>
+            <td class="num">1,763</td>
+            <td class="num">0</td>
+            <td class="num">—</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>CAPGEMINI AMERICA INC</strong></td>
+            <td class="num">1,595</td>
+            <td class="num">15,884</td>
+            <td class="num">90%</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>WIPRO LIMITED</strong></td>
+            <td class="num">1,336</td>
+            <td class="num">17,852</td>
+            <td class="num">89%</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Mphasis Corporation</strong></td>
+            <td class="num">642</td>
+            <td class="num">738</td>
+            <td class="num">94%</td>
+            <td class="num">9%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>TECH MAHINDRA (AMERICAS), INC</strong></td>
+            <td class="num">406</td>
+            <td class="num">8,265</td>
+            <td class="num">91%</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>DELOITTE CONSULTING LLP</strong></td>
+            <td class="num">277</td>
+            <td class="num">4,790</td>
+            <td class="num">90%</td>
+            <td class="num">11%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Grandison Management, Inc.</strong></td>
+            <td class="num">186</td>
+            <td class="num">59</td>
+            <td class="num">92%</td>
+            <td class="num">100%</td>
+            <td><small>Mostly Level I filings (entry-wage)</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Mphasis Corporation </strong></td>
+            <td class="num">180</td>
+            <td class="num">738</td>
+            <td class="num">94%</td>
+            <td class="num">18%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>ATOS SYNTEL INC</strong></td>
+            <td class="num">163</td>
+            <td class="num">779</td>
+            <td class="num">98%</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Management Health Systems, LLC</strong></td>
+            <td class="num">143</td>
+            <td class="num">158</td>
+            <td class="num">53%</td>
+            <td class="num">100%</td>
+            <td><small>Low initial approval rate · Mostly Level I filings (entry-wage)</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>ST. JUDE CHILDREN&#x27;S RESEARCH HOSPITAL</strong></td>
+            <td class="num">114</td>
+            <td class="num">165</td>
+            <td class="num">99%</td>
+            <td class="num">52%</td>
+            <td><small>Mostly Level I filings (entry-wage)</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Larsen &amp; Toubro Infotech Limited </strong></td>
+            <td class="num">113</td>
+            <td class="num">1,052</td>
+            <td class="num">86%</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Washington University</strong></td>
+            <td class="num">113</td>
+            <td class="num">0</td>
+            <td class="num">—</td>
+            <td class="num">71%</td>
+            <td><small>Mostly Level I filings (entry-wage)</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>The Devereux Foundation</strong></td>
+            <td class="num">112</td>
+            <td class="num">683</td>
+            <td class="num">99%</td>
+            <td class="num">84%</td>
+            <td><small>Mostly Level I filings (entry-wage)</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>Capgemini America, Inc.</strong></td>
+            <td class="num">109</td>
+            <td class="num">3,971</td>
+            <td class="num">90%</td>
+            <td class="num">0%</td>
+            <td><small>Staffing/IT-consultancy pattern</small></td>
+          </tr>
+        
+          <tr>
+            <td><strong>THE DEVEREUX FOUNDATION</strong></td>
+            <td class="num">106</td>
+            <td class="num">683</td>
+            <td class="num">99%</td>
+            <td class="num">98%</td>
+            <td><small>Mostly Level I filings (entry-wage)</small></td>
+          </tr>
+        </tbody>
+    </table>
+    
+    <h2>When to apply</h2>
+
+    <div class="kpi-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="card" style="background:#ecfdf5; border-color:#a7f3d0;">
+        <h3 style="margin-top:0; color:#065f46;">Cap-exempt employers — anytime</h3>
+        <p>Universities, affiliated nonprofits, nonprofit research orgs,
+        government research orgs can file at any point in the year. No cap, no
+        lottery, no March deadline. You can convert from OPT to H-1B as soon
+        as a petition is approved.</p>
+        <p><strong>Action:</strong> outreach now → throughout 2026.</p>
+      </div>
+      <div class="card" style="background:#fef3c7; border-color:#fcd34d;">
+        <h3 style="margin-top:0; color:#92400e;">Cap-subject employers — March cycle</h3>
+        <p>Next registration window: <strong>March 2027</strong> (FY2028 lottery).
+        Employers register candidates in mid-March; USCIS conducts the weighted
+        random selection; petitions filed April–June; H-1B status starts
+        October 1, 2027.</p>
+        <p><strong>Action:</strong> outreach by <strong>December 2026</strong> so
+        the employer has time to do internal sponsorship sign-off,
+        prevailing-wage determination, and registration before the March window.</p>
+      </div>
+    </div>
+
+    <p><small>The full <code>timing_calendar</code> view in <code>/data/marts/timing_calendar.csv</code>
+    has a per-employer line you can join into your outreach tracker.</small></p>
+    
+    <h2>Methodology — how realism is computed</h2>
+
+    <h3>Sources (verified live 2026-05-27)</h3>
+    <ul>
+      <li><strong>DOL OFLC LCA disclosure</strong> — FY2022–FY2025 Q4 xlsx, 437,834
+        certified rows. Headline employer-attestation signal (intent).</li>
+      <li><strong>USCIS H-1B Employer Data Hub</strong> — FY2020–FY2023 CSVs,
+        ~209K rows. Initial Approvals = "new sponsorship" headline; Continuing is
+        renewal context only.</li>
+      <li><strong>BLS OEWS May 2024 metro</strong> — wage benchmarks by SOC × CBSA.</li>
+      <li><strong>IPEDS HD 2023</strong> — Title-IV institutions, the
+        HIGH-confidence HIGHER_ED cap-exempt seed.</li>
+      <li><strong>SEC EDGAR</strong> — public-company CIK / ticker for
+        parent-subsidiary entity resolution.</li>
+      <li><strong>Census/OMB CBSA</strong> — county-to-metro crosswalk.</li>
+      <li><strong>WARN Act</strong> — NY/MA/VA/DC scraping; layoff signal.</li>
+    </ul>
+
+    <h3>Sponsorship realism formula</h3>
+    <div class="card">
+      <strong>Cap-exempt</strong> (no lottery):<br>
+      <code>realism = approval_rate × min(1, approvals/3) × (1 − staffing) × (1 − layoff)</code>
+      <br><br>
+      <strong>Cap-subject</strong> (FY2027+ wage-weighted lottery applies):<br>
+      <code>realism = approval_rate × Σ(pct_levelL × lottery_rateL) × min(1, approvals/10) × (1 − staffing) × (1 − layoff)</code>
+    </div>
+
+    <h3>Why LCA-only rankings are misleading</h3>
+    <ul>
+      <li>An LCA is a <em>wage attestation</em>, not a petition. Employers file
+        speculative or bulk LCAs that never become petitions.</li>
+      <li>USCIS Hub measures actual petition decisions, but mixes Initial
+        (new) and Continuing (renewal) — only Initial matters for an OPT-to-H-1B job seeker.</li>
+      <li>Cap-subject petitions also need to win the lottery to matter.
+        Pre-2025 selection rates inflate badly under naive averaging.</li>
+    </ul>
+
+    <h3>Known gaps</h3>
+    <ul>
+      <li>Geographic coverage is curated (DC/NYC/Boston/SF/San Jose/Seattle).
+        Off-map rows have <code>cbsa_code = null</code>. Expand via
+        <code>geo_review.csv</code>.</li>
+      <li>USCIS Hub publishes ~2 FYs behind DOL (latest is FY2023). The most
+        recent DOL filings (FY2024–FY2025) will have <code>uscis_initial_approvals_window
+        = null</code> because USCIS hasn't published yet.</li>
+      <li>WARN scrapers exist for NY/MA/VA/DC; CA/TX/WA/NJ/IL/FL/GA are
+        JS-gated and need per-state Playwright work.</li>
+      <li>PERM (green-card) data is ingested but not yet wired into the
+        join — <code>green_card_friendly_employers</code> view is empty.</li>
+    </ul>
+    
+    <h2>Configuration reference (locked defaults)</h2>
+    <p class="subhead">Edit these in <code>config.yaml</code> /
+    <code>user_profile.yaml</code> and re-run <code>python run.py</code>.</p>
+    <table>
+      <thead><tr><th>Knob</th><th>Value</th><th>Rationale</th></tr></thead>
+      <tbody><tr><td><code>n_threshold_capexempt</code></td><td class='num'>3</td><td><small>Initial approvals required before cap-exempt realism reaches full credit</small></td></tr><tr><td><code>n_threshold_capsubject</code></td><td class='num'>10</td><td><small>Initial approvals required before cap-subject realism reaches full credit</small></td></tr><tr><td><code>window_years_lca / uscis</code></td><td class='num'>4 / 4</td><td><small>Sponsorship window spans the FY2025 regime change</small></td></tr><tr><td><code>lottery_selection_rate_fy2026</code></td><td class='num'>0.353</td><td><small>Flat (pre-wage-weighted) selection rate from 118,660 / 336,153</small></td></tr><tr><td><code>wage_level lottery entries</code></td><td class='num'>L1:1 / L2:2 / L3:3 / L4:4</td><td><small>From 90 FR 2025-23853, effective 2026-02-27</small></td></tr><tr><td><code>w_realism</code></td><td class='num'>0.45</td><td><small>Personal-score weight on sponsorship realism (dominant)</small></td></tr><tr><td><code>w_fit</code></td><td class='num'>0.2</td><td><small>Weight on SOC fit</small></td></tr><tr><td><code>w_wage</code></td><td class='num'>0.15</td><td><small>Weight on wage adequacy (above $75K floor)</small></td></tr><tr><td><code>w_metro</code></td><td class='num'>0.1</td><td><small>Weight on metro preference</small></td></tr><tr><td><code>w_demand</code></td><td class='num'>0.1</td><td><small>Weight on demand signal (currently placeholder)</small></td></tr><tr><td><code>w_layoff (penalty)</code></td><td class='num'>0.25</td><td><small>Subtractive penalty for recent WARN</small></td></tr><tr><td><code>min_wage_floor_usd_annual</code></td><td class='num'>75000</td><td><small>Hard filter for personal_top_targets view</small></td></tr><tr><td><code>exclude_staffing_firms</code></td><td class='num'>True</td><td><small>Filter out IT staffing / body shops</small></td></tr><tr><td><code>min_evidence_tier</code></td><td class='num'>MEDIUM</td><td><small>Suppress LOW-evidence rows from headline view</small></td></tr></tbody>
+    </table>
+    <footer>Generated by h1b-labor-map pipeline · data/marts/report.html · re-run via <code>python run.py --stage report</code></footer>
+</body>
+</html>

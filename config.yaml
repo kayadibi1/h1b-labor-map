@@ -1,0 +1,261 @@
+# config.yaml — pipeline-level defaults
+# All rule values are dated + sourced. Update via Phase 0 each quarterly re-run.
+# Mirror of the DEFAULTS REFERENCE section of labor_market_h1b_map_blueprint.md.
+
+meta:
+  config_version: "1.0.0"
+  last_phase0_run: "2026-05-27"
+  notes: |
+    Numeric knobs live here so scoring.py never hardcodes them.
+    Rule values carry source + date so an auditor can re-verify.
+
+# ----------------------------------------------------------------------------
+# Time windows
+# ----------------------------------------------------------------------------
+windows:
+  window_years_lca: 4         # spans pre/post-2024 beneficiary-centric rule
+  window_years_uscis: 4
+  demand_lookback_quarters: 8 # JOLTS/CES short window
+  layoff_lookback_months: 12  # WARN recency cutoff
+
+# ----------------------------------------------------------------------------
+# Sample-size dampeners (split per branch — see Realism Scoring section)
+# ----------------------------------------------------------------------------
+dampeners:
+  n_threshold_capexempt: 3    # think-tank scale; lower so the lane isn't masked
+  n_threshold_capsubject: 10  # ~2.5/yr; below this is one-off accommodation
+
+# ----------------------------------------------------------------------------
+# H-1B rules — VERIFY each quarter in Phase 0.3
+# ----------------------------------------------------------------------------
+rules:
+  cap_regular:
+    value: 65000
+    source: "8 USC 1184(g)(1)(A)(vii)"
+    verified_at: "2026-05-27"
+  cap_masters_advanced_degree:
+    value: 20000
+    source: "8 USC 1184(g)(5)(C)"
+    verified_at: "2026-05-27"
+  lottery_selection_rate_fy2026:
+    value: 0.353
+    source: "USCIS FY2026 selection numbers: 118,660 / 336,153 = 35.3% (Fragomen, Envoy Global, Ogletree confirmations)"
+    verified_at: "2026-05-27"
+    notes: "Under beneficiary-centric rule, pre-wage-weighting"
+  lottery_selection_rate_fy2025:
+    value: 0.29
+    source: "USCIS FY2025 reported selection rate ~29% under beneficiary-centric"
+    verified_at: "2026-05-27"
+  beneficiary_centric_rule_effective_fy: 2025
+  regime_split_pre_window: "FY2022-FY2024"
+  regime_split_post_window: "FY2025+"
+
+  # ------------------------------------------------------------------------
+  # WAGE-WEIGHTED LOTTERY (effective FY2027 registration onwards)
+  # Federal Register, 90 FR (Dec 29, 2025), 2025-23853. Effective Feb 27, 2026.
+  # Level IV: 4 entries; Level III: 3; Level II: 2; Level I: 1.
+  # This compounds with beneficiary-centric selection.
+  # ------------------------------------------------------------------------
+  wage_weighted_lottery_effective_fy: 2027
+  wage_weighted_lottery_source: "90 FR, Dec 29 2025 (2025-23853); effective 2026-02-27"
+  wage_level_lottery_entries:
+    "1": 1
+    "2": 2
+    "3": 3
+    "4": 4
+  # Approximate per-level adjusted selection probability for an applicant
+  # going into a weighted FY2027+ lottery, assuming historical wage-level
+  # distribution (Level 1: 25%, Level 2: 50%, Level 3: 20%, Level 4: 5%).
+  # mean_weight = 1*0.25 + 2*0.50 + 3*0.20 + 4*0.05 = 2.05
+  # P(selection | level L) ≈ base_rate × L / mean_weight (capped at 1.0).
+  # These are recomputed in scoring.py; values here are pre-baked defaults.
+  wage_level_adjusted_selection_rate_fy2027:
+    "1": 0.17       # 1/2.05 × 0.35 ≈ 0.17
+    "2": 0.34
+    "3": 0.51
+    "4": 0.68
+    mean_weight_assumption: 2.05
+    base_rate_assumption: 0.35
+    notes: "RECOMPUTE per quarterly run from actual wage-level mix observed in DOL data"
+
+# ----------------------------------------------------------------------------
+# Cap-exempt subcategories (per 8 CFR 214.2(h)(19)(iii)(C) — updated Dec 2024)
+# The "Modernizing H-1B" final rule (89 FR 100024, 2024-12-18) replaced
+# "primarily engaged" and "primary mission" with "fundamental activity" —
+# a LOOSER test. More nonprofits now qualify as nonprofit research orgs.
+# Citation: 8 CFR 214.2(h)(8)(iii)(F)(2)(iv), (h)(8)(iii)(F)(4),
+#           (h)(19)(iii)(B)(4), (h)(19)(iii)(C)
+# ----------------------------------------------------------------------------
+cap_exempt:
+  rule_citation: "8 CFR 214.2(h)(19)(iii)(C) per 89 FR 100024 (2024-12-18)"
+  rule_effective_date: "2025-01-17"
+  fundamental_activity_test: true   # 2024 modernization rule applies
+  rule_verified_at: "2026-05-27"
+  subcategories:
+    - HIGHER_ED
+    - AFFILIATED_NONPROFIT
+    - NONPROFIT_RESEARCH
+    - GOVT_RESEARCH
+    - NONE
+  confidence_floors:
+    HIGHER_ED: HIGH
+    AFFILIATED_NONPROFIT: MEDIUM
+    NONPROFIT_RESEARCH: MEDIUM   # raised from LOW given looser fundamental-activity test
+    GOVT_RESEARCH: MEDIUM
+    NONE: HIGH
+
+# ----------------------------------------------------------------------------
+# Staffing-firm heuristic
+# ----------------------------------------------------------------------------
+staffing_firm:
+  naics_codes: [541512, 541513, 541519]
+  level1_share_min: 0.50
+  volume_min: 100
+  # Manual overrides (extend via /data/manifest/corporate_groups.yaml)
+  known_staffing_overrides:
+    - "COGNIZANT TECHNOLOGY SOLUTIONS"
+    - "INFOSYS"
+    - "TATA CONSULTANCY SERVICES"
+    - "WIPRO"
+    - "HCL TECHNOLOGIES"
+    - "TECH MAHINDRA"
+    - "LARSEN AND TOUBRO INFOTECH"
+    - "CAPGEMINI"
+    - "MPHASIS"
+    - "ACCENTURE FEDERAL SERVICES"
+    - "DELOITTE CONSULTING"
+    - "MINDTREE"
+    - "IGATE"
+    - "SYNTEL"
+    - "ZENSAR TECHNOLOGIES"
+
+# ----------------------------------------------------------------------------
+# Schema validation bounds (pandera)
+# ----------------------------------------------------------------------------
+validation:
+  wage_min_annual: 15000
+  wage_max_annual: 1000000
+  decision_date_min: "2010-01-01"
+  null_rate_critical_max: 0.01
+  null_rate_file_corrupt: 0.80
+
+# ----------------------------------------------------------------------------
+# Smoke-test alerting
+# ----------------------------------------------------------------------------
+smoke:
+  mart_row_count_delta_alert: 0.20
+
+# ----------------------------------------------------------------------------
+# Sources — populated by Phase 0.1
+# ----------------------------------------------------------------------------
+sources:
+  dol_oflc:
+    landing_url: "https://www.dol.gov/agencies/eta/foreign-labor/performance"
+    resolved_at: null
+    latest_period: null
+    format: "xlsx"
+    notes: "Per-program per-FY xlsx; schema drifts year to year"
+  uscis_employer_hub:
+    landing_url: "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub"
+    resolved_at: null
+    latest_period: null
+    format: "csv"
+  bls_api:
+    base_url: "https://api.bls.gov/publicAPI/v2/timeseries/data/"
+    requires_key: true
+  bls_oews:
+    landing_url: "https://www.bls.gov/oes/tables.htm"
+    format: "xlsx"
+  bls_projections:
+    landing_url: "https://www.bls.gov/emp/data/occupational-data.htm"
+    format: "xlsx"
+  warn_states:
+    # Top 10 H-1B states + DC; per-state portals (often scrape-only)
+    california: "https://edd.ca.gov/en/jobs_and_training/Layoff_Services_WARN/"
+    texas: "https://www.twc.texas.gov/businesses/worker-adjustment-and-retraining-notification-warn-notices"
+    new_york: "https://dol.ny.gov/warn-notices"
+    washington: "https://esd.wa.gov/about-employees/WARN"
+    new_jersey: "https://www.nj.gov/labor/employer-services/warn/"
+    illinois: "https://dceo.illinois.gov/aboutdceo/reportsrequiredbystatute/warnreport.html"
+    massachusetts: "https://www.mass.gov/lists/warn-notices"
+    virginia: "https://www.vec.virginia.gov/warn-notices"
+    florida: "https://floridajobs.org/office-directory/division-of-workforce-services/workforce-programs/reemployment-and-emergency-assistance-coordination-team-react/warn-notices"
+    georgia: "https://dol.georgia.gov/get-warn-notice-information"
+    dc: "https://does.dc.gov/page/warn-notifications"
+  irs_990:
+    bulk_landing: "https://www.irs.gov/charities-non-profits/form-990-series-downloads"
+    propublica_api: "https://projects.propublica.org/nonprofits/api/v2/"
+  edgar:
+    company_facts_api: "https://data.sec.gov/api/xbrl/companyfacts/"
+    company_tickers: "https://www.sec.gov/files/company_tickers.json"
+  ipeds:
+    landing: "https://nces.ed.gov/ipeds/use-the-data"
+    title_iv_list: "https://ope.ed.gov/dapip/"
+  sevp_stem:
+    landing: "https://www.ice.gov/sites/default/files/documents/Document/2024/stemList2024.pdf"
+    notes: "Verify in Phase 0.0 — file name changes each list update"
+  census_cbsa:
+    gazetteer: "https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html"
+    omb_delineation: "https://www.census.gov/geographies/reference-maps/2023/geo/cbsa.html"
+
+# ----------------------------------------------------------------------------
+# Target SOCs — proposed SAIS defaults (Phase 0.6 will confirm/edit)
+# ----------------------------------------------------------------------------
+target_socs:
+  - code: "19-3011"
+    title: "Economists"
+    stem_eligible: true
+    notes: "Strong SAIS fit; low H-1B volume"
+  - code: "15-2031"
+    title: "Operations Research Analysts"
+    stem_eligible: true
+    notes: "STEM, high H-1B volume"
+  - code: "15-2041"
+    title: "Statisticians"
+    stem_eligible: true
+    notes: "STEM, high H-1B volume"
+  - code: "13-1111"
+    title: "Management Analysts"
+    stem_eligible: false
+    notes: "Large pool; mixed quality (some staffing)"
+  - code: "13-1161"
+    title: "Market Research Analysts"
+    stem_eligible: true
+    notes: "High volume; often Level I"
+  - code: "13-2051"
+    title: "Financial and Investment Analysts"
+    stem_eligible: false
+    notes: "High volume"
+  - code: "13-1041"
+    title: "Compliance Officers"
+    stem_eligible: false
+    notes: "Policy-adjacent; moderate volume"
+  - code: "11-9151"
+    title: "Social and Community Service Managers"
+    stem_eligible: false
+    notes: "Policy/NGO fit"
+  - code: "19-3094"
+    title: "Political Scientists"
+    stem_eligible: false
+    notes: "Strong SAIS fit; very thin H-1B market"
+  - code: "19-3022"
+    title: "Survey Researchers"
+    stem_eligible: false
+    notes: "Research-org friendly"
+
+# ----------------------------------------------------------------------------
+# Target metros — proposed defaults (CBSA codes resolved in Phase 0.1)
+# ----------------------------------------------------------------------------
+target_metros:
+  - cbsa: "47900"
+    name: "Washington-Arlington-Alexandria, DC-VA-MD-WV"
+  - cbsa: "35620"
+    name: "New York-Newark-Jersey City, NY-NJ-PA"
+  - cbsa: "14460"
+    name: "Boston-Cambridge-Newton, MA-NH"
+  - cbsa: "41860"
+    name: "San Francisco-Oakland-Berkeley, CA"
+  - cbsa: "41940"
+    name: "San Jose-Sunnyvale-Santa Clara, CA"
+  - cbsa: "42660"
+    name: "Seattle-Tacoma-Bellevue, WA"
