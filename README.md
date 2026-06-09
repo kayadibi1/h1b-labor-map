@@ -1,5 +1,7 @@
 # US Labor Market × H-1B Sponsorship Map
 
+![Personal targeting report output](docs/img/report.png)
+
 A reproducible, citation-driven data pipeline that maps US labor-market demand
 against employer H-1B sponsorship behavior. It turns DOL LCA, USCIS approvals,
 BLS / OEWS, IPEDS, IRS, and SEC filings into an auditable, ranked view of which
